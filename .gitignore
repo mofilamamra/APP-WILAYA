@@ -14,4 +14,4 @@ env/
 migrations/
 
 # instance folder
-instance/
+#instance/
