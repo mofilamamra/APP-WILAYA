@@ -22,5 +22,5 @@ class TaskForm(FlaskForm):
     description = StringField(label="Description", validators=[DataRequired()], widget=TextArea())
     image = FileField(validators=[FileRequired()])
     date = DateField('Date de la tache', validators=[Required()], format='%d/%m/%Y', default=datetime.today)
-    user = SelectField('Attribuez la tâche à', validators=[DataRequired()],choices=get_users())
+    user = SelectField('Attribuez la tâche à',choices=get_users())
     submit = SubmitField(label="Créer Tache")

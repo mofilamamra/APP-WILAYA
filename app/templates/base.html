@@ -83,6 +83,12 @@
       </div>
       {% endif %}
     </nav>
+    {% if current_user.is_authenticated %}
+    <div class="mt-5 text-center">
+      <h5>Your category is <span>{{ current_user.category.title }}</span>, You have <span>{{ current_user.tasks.all()|length }}</span> tasks.
+      </h5>
+    </div>
+    {% endif %}
     {% block content %} {% endblock %}
 
     <script src="{{ url_for('static', filename= 'js/jquery.min.js') }}"></script>

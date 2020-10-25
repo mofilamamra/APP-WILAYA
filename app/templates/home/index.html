@@ -21,9 +21,6 @@ content %} {% if not current_user.is_authenticated %}
     {% endif %} {% endwith %}
   </div>
   <h3>Welcome, <span>{{ current_user.username }}</span> 🎉</h3>
-  <div class="mb-4">
-    <h5>Your category is <span>{{ current_user.category.title }}</span>, You have <span>{{ current_user.tasks.all()|length }}</span> tasks.</h5>
-  </div>
   <div class="show-tasks">
     {% if tasks|length <= 0 %}
       <p>

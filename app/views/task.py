@@ -37,34 +37,46 @@ def tasks():
 @login_required
 #@requires_access_level(ACCESS['admin'])
 def new_task():
+    def get_users():
+      users_query = User.query.all()
+      users = []
+
+      for user in users_query:
+        users.append((user.id,user.username)) 
+
+      return users
+    
     title = "Ajouter Tache"
-    form = TaskForm()
+    form = TaskForm(normaluser=current_user.id)
+    form.user.choices = get_users()
+
     if request.method == 'GET':
       return render_template('tasks/create_task.html', title=title, form=form)
 
-    if form.validate_on_submit():
-        title = request.form.get("title")
-        description = request.form.get("description")
-        f = form.image.data
-        filename = secure_filename(f.filename)
-        f.save(os.path.join(app.instance_path, 'photos', filename))
-        date = request.form.get("date")
-        user_id = request.form.get("user")
-        
-        task = Task(title,description,filename,convert(date),user_id)
+    title = request.form.get("title")
+    description = request.form.get("description")
+    f = form.image.data
+    filename = secure_filename(f.filename)
+    f.save(os.path.join(app.instance_path, 'photos', filename))
+    date = request.form.get("date")
 
-        user = User.query.filter_by(id=user_id).first()
-
-        user.tasks.append(task)
-
-        db.session.add(task)
-        db.session.commit()
-
-        flash('Votre tâche a été ajoutée!')
-
-        return redirect(url_for('task.new_task'))
+    if current_user.is_admin():
+      user_id = request.form.get("user")
     else:
-      return render_template("tasks/create_task.html", title=title, form=form)
+      user_id = current_user.id
+
+    task = Task(title,description,filename,convert(date),user_id)
+
+    user = User.query.filter_by(id=user_id).first()
+
+    user.tasks.append(task)
+
+    db.session.add(task)
+    db.session.commit()
+
+    flash('Votre tâche a été ajoutée!')
+
+    return redirect(url_for('task.new_task'))
 
 @task.route('/download/<int:id>')
 @login_required
