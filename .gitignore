@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 
 # environment variables file
-.env
 todo_env/
 env/
 
