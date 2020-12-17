@@ -376,3 +376,130 @@ h5 > span {
   color: white;
   text-decoration: none;
 }
+
+
+/* Responsive */
+
+/* Extra small Screens */
+@media (max-width: 575px) {
+  /* Navbar */
+  .navbar #navbarSupportedContent a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 7px 0;
+    margin-left: 0 !important;
+  }
+  /* Home Page (no-auth) */
+  .home-no-auth h1 {
+    font-size: 3rem;
+  }
+  .home-no-auth img {
+    width: 90%;
+    margin: 0 auto 4rem;
+  }
+  .home-no-auth .btn__get-started {
+    width: 90%;
+    margin: 0 auto;
+  }
+  /* Home Page (auth) */
+  .auth-info {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .home-screen {
+    width: 90%;
+    margin: 30px auto 10px auto;
+  }
+  /* register & login form */
+  .StyleForm .leftSide img {
+    display: none;
+  }
+  
+  /* add new category page */
+  .tasks-new-task h2 {
+    font-size: 1.5rem;
+  }
+  .tasks-new-task form .btn {
+    width: 100%;
+  }
+}
+
+/* Small Screens */
+@media (min-width: 576px) {
+  /* Navbar */
+  .navbar #navbarSupportedContent a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 7px 0;
+    margin-left: 0;
+  }
+  /* Home Page (no-auth) */
+  .home-no-auth h1 {
+    font-size: 4rem;
+  }
+  .home-no-auth img {
+    width: 90%;
+    margin: 0 auto 4rem;
+  }
+  .home-no-auth .btn__get-started {
+    width: 90%;
+    margin: 0 auto;
+  }
+  /* Home Page (auth) */
+  .auth-info {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .home-screen {
+    width: 100%;
+    margin: 30px auto 10px auto;
+  }
+  /* register & login form */
+  .StyleForm .leftSide img {
+    display: block;
+  }
+}
+
+/* Medium Screens */
+@media (min-width: 768px) {
+  /* Home Page (no-auth) */
+  .home-no-auth h1 {
+    font-size: 5rem;
+  }
+  /* add new category page */
+  .tasks-new-task h2 {
+    font-size: 2rem;
+  }
+  .tasks-new-task form .btn {
+    width: 60%;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 992px) {
+  /* Navbar */
+  .navbar #navbarSupportedContent a {
+    width: initial;
+    text-align: center;
+    padding: 7px 21px;
+    margin-left: auto;
+  }
+  .navbar #navbarSupportedContent div {
+    display: flex;
+    margin-left: auto;
+  }
+  /* Home Page (no-auth) */
+  .home-no-auth img {
+    width: 100%;
+  }
+  .home-no-auth .btn__get-started {
+    width: 30%;
+    margin: 0 auto;
+  }
+  /* add new category page */
+  .tasks-new-task form .btn {
+    width: 40%;
+  }
+}

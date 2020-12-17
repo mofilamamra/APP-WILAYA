@@ -58,22 +58,23 @@
       </button>
 
       {% if current_user.is_authenticated %}
-      <div class="ml-auto navbar-right-links">
-        <a class="ml-4" href="{{ url_for('task.tasks') }}">Taches</a>
-        <a class="ml-4" href="{{ url_for('category.categories') }}">Categories</a>
+      <div class="ml-auto navbar-right-links collapse navbar-collapse" id="navbarSupportedContent">
+        <div>
+          <a href="{{ url_for('task.tasks') }}">Taches</a>
+        <a href="{{ url_for('category.categories') }}">Categories</a>
         <a
           href="{{ url_for('auth.register') }}"
-          class="ml-4 btn__register"
+          class="btn__register"
           >inscrire</a
         >
-        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger ml-4"
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger"
           >Se déconnecter</a
         >
-        
+        </div>
       </div>
 
       {% else %}
-      <div class="ml-auto">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a
           href="{{ url_for('auth.login') }}"
           class="btn btn__login"
@@ -84,7 +85,7 @@
       {% endif %}
     </nav>
     {% if current_user.is_authenticated %}
-    <div class="mt-5 text-center">
+    <div class="mt-5 text-center auth-info">
       <h5>Your category is <span>{{ current_user.category.title }}</span>, You have <span>{{ current_user.tasks.all()|length }}</span> tasks.
       </h5>
     </div>
